@@ -1,5 +1,5 @@
 {
-  "name": "datadog",
+  "name": "cdk-datadog",
   "version": "0.1.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,6 +11,7 @@
   "devDependencies": {
     "@aws-cdk/assert": "1.84.0",
     "@types/jest": "^26.0.10",
+    "@types/lodash": "^4.14.168",
     "@types/node": "10.17.27",
     "jest": "^26.4.2",
     "ts-jest": "^26.2.0",
