@@ -40,8 +40,17 @@ In case of unsupported properties, provide them manually as follows:.
 
 Note the use of PascalCase, as these are CloudFormation identifiers that are passed onward verbatim.
 
-
 ## Build
 
  * `npm run build`   compile typescript to js
  * `npm run test`    perform the jest unit tests
+ * `npm outdated`    find outdated npm dependencies
+
+## Testing Changes Locally
+
+An easy way of testing new functionality is to manually package the library:
+
+1. Change the version in `package.json` and run `npm install`
+2. Run `npm pack`, thereby packaging the changes in a tarball
+3. In the service using cdk-datadog, run `npm install <path to tarball>`
+
