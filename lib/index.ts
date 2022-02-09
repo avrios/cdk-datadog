@@ -1,4 +1,5 @@
-import * as cdk from '@aws-cdk/core';
+import { Construct } from 'constructs';
+import { CfnResource } from 'aws-cdk-lib';
 import * as _ from 'lodash';
 
 /**
@@ -105,16 +106,16 @@ export interface DatadogCredentials {
     readonly apiUrl?: string;
 }
 
-export class DatadogMonitor extends cdk.Construct {
+export class DatadogMonitor extends Construct {
     static readonly DEFAULT_API_URL = 'https://api.datadoghq.eu';
 
-    constructor(scope: cdk.Construct, id: string, props: DatadogMonitorProps) {
+    constructor(scope: Construct, id: string, props: DatadogMonitorProps) {
         super(scope, id);
         this.createMonitor(id, props);
     }
 
-    private createMonitor(id: string, props: DatadogMonitorProps): cdk.CfnResource {
-        return new cdk.CfnResource(this, id, {
+    private createMonitor(id: string, props: DatadogMonitorProps): CfnResource {
+        return new CfnResource(this, id, {
             type: 'Datadog::Monitors::Monitor',
             properties:  _.merge({
                     // Note the (left-hand) PascalCase here! These are CloudFormation identifiers.

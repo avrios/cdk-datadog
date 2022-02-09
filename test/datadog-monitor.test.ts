@@ -1,10 +1,10 @@
 import '@aws-cdk/assert/jest';
-import * as cdk from '@aws-cdk/core';
+import { Stack } from 'aws-cdk-lib';
 import * as DatadogMonitor from '../lib/index';
 import { SynthUtils } from "@aws-cdk/assert";
 
 test('Minimal Datadog Monitor Snapshot Test', () => {
-    const stack = new cdk.Stack();
+    const stack = new Stack();
 
     // WHEN
     new DatadogMonitor.DatadogMonitor(stack, 'DatadogTestMonitor', {
@@ -21,7 +21,7 @@ test('Minimal Datadog Monitor Snapshot Test', () => {
 });
 
 test('Datadog Monitor Can Be Extended With Unsupported Properties', () => {
-    const stack = new cdk.Stack();
+    const stack = new Stack();
     const criticalThreshold = 111;
     const creatorName = 'some creator';
     const isLocked = true;
