@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 
 /**
  * Selectively exposed based on
- * https://github.com/DataDog/datadog-cloudformation-resources/blob/datadog-monitors-monitor-3.0.0/datadog-monitors-monitor-handler/datadog-monitors-monitor.json
+ * https://github.com/DataDog/datadog-cloudformation-resources/blob/datadog-monitors-monitor-4.7.1/datadog-monitors-monitor-handler/datadog-monitors-monitor.json
  */
 export interface DatadogMonitorProps {
     /**
@@ -37,11 +37,6 @@ export interface DatadogMonitorProps {
      * A message to include with notifications for the monitor
      */
     readonly message?: string
-
-    /**
-     * Credentials for the Datadog API
-     */
-    readonly datadogCredentials: DatadogCredentials;
 
     /**
      * Additional parameters to pass through to the underlying CloudFormation template.
@@ -88,27 +83,7 @@ export interface DatadogMonitorThresholds {
     readonly warningRecovery?: number;
 }
 
-export interface DatadogCredentials {
-    /**
-     * Datadog API key
-     */
-    readonly apiKey: string;
-
-    /**
-     * Datadog application key
-     */
-    readonly applicationKey: string;
-
-    /**
-     * Datadog API URL.
-     * Caution, we default to https://api.datadoghq.eu, use https://api.datadoghq.com for US accounts.
-     */
-    readonly apiUrl?: string;
-}
-
 export class DatadogMonitor extends Construct {
-    static readonly DEFAULT_API_URL = 'https://api.datadoghq.eu';
-
     constructor(scope: Construct, id: string, props: DatadogMonitorProps) {
         super(scope, id);
         this.createMonitor(id, props);
@@ -132,12 +107,7 @@ export class DatadogMonitor extends Construct {
                             Warning: props.options?.thresholds?.warning,
                             WarningRecovery: props.options?.thresholds?.warningRecovery,
                         }
-                    } : undefined,
-                    DatadogCredentials: {
-                        ApiKey: props.datadogCredentials.apiKey,
-                        ApplicationKey: props.datadogCredentials.applicationKey,
-                        ApiURL: props.datadogCredentials.apiUrl ? props.datadogCredentials.apiUrl : DatadogMonitor.DEFAULT_API_URL
-                    }
+                    } : undefined
                 },
                 props.additionalMonitorParams
             )
