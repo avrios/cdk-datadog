@@ -1,15 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Minimal Datadog Monitor Snapshot Test 1`] = `
-Object {
-  "Resources": Object {
-    "DatadogTestMonitor32CCE9EB": Object {
-      "Properties": Object {
-        "DatadogCredentials": Object {
-          "ApiKey": "some-api-key",
-          "ApiURL": "https://api.datadoghq.eu",
-          "ApplicationKey": "some-app-key",
-        },
+{
+  "Resources": {
+    "DatadogTestMonitor32CCE9EB": {
+      "Properties": {
         "Query": "some-query",
         "Type": "metric alert",
       },

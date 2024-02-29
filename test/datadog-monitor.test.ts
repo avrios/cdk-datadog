@@ -9,11 +9,7 @@ test('Minimal Datadog Monitor Snapshot Test', () => {
     // WHEN
     new DatadogMonitor.DatadogMonitor(stack, 'DatadogTestMonitor', {
         query: 'some-query',
-        type: 'metric alert',
-        datadogCredentials: {
-            apiKey: 'some-api-key',
-            applicationKey: 'some-app-key'
-        }
+        type: 'metric alert'
     });
 
     // THEN
@@ -34,10 +30,6 @@ test('Datadog Monitor Can Be Extended With Unsupported Properties', () => {
             thresholds: {
                 critical: criticalThreshold
             }
-        },
-        datadogCredentials: {
-            apiKey: 'some-api-key',
-            applicationKey: 'some-app-key'
         },
         additionalMonitorParams: {
             Options: {
