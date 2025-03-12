@@ -11,7 +11,7 @@ export interface DatadogMonitorProps {
      * The type of the monitor
      */
     readonly type: 'composite' | 'event alert' | 'log alert' | 'metric alert' | 'process alert' | 'query alert' |
-        'service check' | 'synthetics alert' | 'trace-analytics aler';
+        'service check' | 'synthetics alert' | 'trace-analytics alert';
 
     /**
      * The monitor query
